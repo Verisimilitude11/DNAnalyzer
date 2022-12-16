@@ -14,9 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReadingFramesTest {
 
-    public static String testSequence = "gggggaggtggcgaggaagatgac";
-    public static String dnaSequenceWithLengthTwentyThree = "gggggaggtggcgaggaagatga";
-    public static String dnaSequenceWithLengthTwentyTwo = "gggggaggtggcgaggaagatg";
+    final String testSequence = "gggggaggtggcgaggaagatgac";
+    final String dnaSequenceWithLengthTwentyThree = "gggggaggtggcgaggaagatga";
+    final String dnaSequenceWithLengthTwentyTwo = "gggggaggtggcgaggaagatg";
 
     /**
      * These are the expected codon counts from .\assets\dna\real\brca1.fa using ReadingFrame 1
@@ -225,7 +225,7 @@ class ReadingFramesTest {
 
 
     @Test
-    public void calculateCodonStartIndicesFrame1Test() {
+    void calculateCodonStartIndicesFrame1Test() {
         int[] expectedResult = {0, 3, 6, 9, 12, 15, 18, 21};
         CodonFrame temp = new CodonFrame(testSequence, (short) 1, 1, 100);
         ReadingFrames readingFrameTest = new ReadingFrames(temp);
@@ -236,7 +236,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void calculateCodonStartIndicesFrame2Test() {
+    void calculateCodonStartIndicesFrame2Test() {
         int[] expectedResult = {1, 4, 7, 10, 13, 16, 19};
         CodonFrame temp = new CodonFrame(testSequence, (short) 2, 1, 100);
         ReadingFrames readingFrameTest = new ReadingFrames(temp);
@@ -247,7 +247,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void calculateCodonStartIndicesFrame3Test() {
+    void calculateCodonStartIndicesFrame3Test() {
         int[] expectedResult = {2, 5, 8, 11, 14, 17, 20};
         CodonFrame temp = new CodonFrame(testSequence, (short) 3, 1, 100);
         ReadingFrames readingFrameTest = new ReadingFrames(temp);
@@ -256,7 +256,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyThreeFrame1Test() {
+    void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyThreeFrame1Test() {
         int[] expectedResult = {0, 3, 6, 9, 12, 15, 18};
         String testSequence = dnaSequenceWithLengthTwentyThree;
         CodonFrame temp = new CodonFrame(testSequence, (short) 1, 1, 100);
@@ -266,7 +266,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyThreeFrame2Test() {
+    void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyThreeFrame2Test() {
         int[] expectedResult = {1, 4, 7, 10, 13, 16, 19};
         String testSequence = dnaSequenceWithLengthTwentyThree;
         CodonFrame temp = new CodonFrame(testSequence, (short) 2, 1, 100);
@@ -276,7 +276,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyThreeFrame3Test() {
+    void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyThreeFrame3Test() {
         int[] expectedResult = {2, 5, 8, 11, 14, 17, 20};
         String testSequence = dnaSequenceWithLengthTwentyThree;
         CodonFrame temp = new CodonFrame(testSequence, (short) 3, 1, 100);
@@ -287,7 +287,7 @@ class ReadingFramesTest {
 
     //dnaSequenceWithLengthTwentyTwo
     @Test
-    public void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyTwoFrame1Test() {
+    void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyTwoFrame1Test() {
         int[] expectedResult = {0, 3, 6, 9, 12, 15, 18};
         String testSequence = dnaSequenceWithLengthTwentyTwo;
         CodonFrame temp = new CodonFrame(testSequence, (short) 1, 1, 100);
@@ -297,7 +297,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyTwoFrame2Test() {
+    void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyTwoFrame2Test() {
         int[] expectedResult = {1, 4, 7, 10, 13, 16, 19};
         String testSequence = dnaSequenceWithLengthTwentyTwo;
         CodonFrame temp = new CodonFrame(testSequence, (short) 2, 1, 100);
@@ -307,7 +307,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyTwoFrame3Test() {
+    void calculateCodonStartIndicesUsingDnaSequenceWithLengthTwentyTwoFrame3Test() {
         int[] expectedResult = {2, 5, 8, 11, 14, 17};
         String testSequence = dnaSequenceWithLengthTwentyTwo;
         CodonFrame temp = new CodonFrame(testSequence, (short) 3, 1, 100);
@@ -317,7 +317,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void buildCodonMapBrcaMethodsFrame1Tests() {
+    void buildCodonMapBrcaMethodsFrame1Tests() {
         Path projectPath = Path.of("");
         Path brcaPath = projectPath.resolve("assets/dna/real/brca1.fa");
 
@@ -331,7 +331,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void buildCodonMapBrcaMethodsFrame2Tests() {
+    void buildCodonMapBrcaMethodsFrame2Tests() {
         Path projectPath = Path.of("");
         Path brcaPath = projectPath.resolve("assets/dna/real/brca1.fa");
 
@@ -345,7 +345,7 @@ class ReadingFramesTest {
     }
 
     @Test
-    public void buildCodonMapBrcaMethodsFrame3Tests() {
+    void buildCodonMapBrcaMethodsFrame3Tests() {
         Path projectPath = Path.of("");
         Path brcaPath = projectPath.resolve("assets/dna/real/brca1.fa");
 
