@@ -4,49 +4,40 @@
  */
 package DNAnalyzer;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.junit.jupiter.api.Test;
-
 import DNAnalyzer.core.DNAAnalysis;
+import org.junit.jupiter.api.Test;
+import java.nio.file.Path;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static DNAnalyzer.utils.core.Utils.readFile;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class DNAAnalysisTest {
 
-	Path projectPath = Path.of("");
-	Path dnaLongTestInput = projectPath.resolve("assets/dna/random/dnalong.fa");
+    @Test
+    void testCountBasePairs() {
+        Path projectPath = Path.of("");
+        Path brcaPath = projectPath.resolve("assets/dna/real/brca1.fa");
 
-	@Test
-	void testCountBasePairs() {
-		try {
-			List<String> inputLines = Files.readAllLines(dnaLongTestInput);
-			long[] expected = { 25000381, 24998528, 25000967, 25000124 };
-			long[] actual = DNAAnalysis.countBasePairs(inputLines.get(0));
-			assertArrayEquals(expected, actual);
-		} catch (IOException ex) {
-			Logger.getLogger(DNAAnalysisTest.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+        String brcaDnaString = readFile(brcaPath.toFile());
+        //a = 3790, t = 2837, g = 1903, c = 1804
+        long[] expected = {3790, 2837, 1903, 1804};
+        long[] actual = DNAAnalysis.countBasePairs(brcaDnaString);
+        assertArrayEquals(expected, actual);
+    }
 
-	@Test
-	void testCountBasePairsWithEmptyString() {
-		String testEmptyString = "";
-		long[] expected = { 0, 0, 0, 0 };
-		long[] actual = DNAAnalysis.countBasePairs(testEmptyString);
-		assertArrayEquals(expected, actual);
+    @Test
+    void testCountBasePairsWithEmptyString() {
+        String testEmptyString = "";
+        long[] expected = {0, 0, 0, 0};
+        long[] actual = DNAAnalysis.countBasePairs(testEmptyString);
+        assertArrayEquals(expected, actual);
 
-	}
+    }
 
-	@Test
-	void testCountBasePairsWithNullString() {
-		long[] expected = { 0, 0, 0, 0 };
-		long[] actual = DNAAnalysis.countBasePairs(null);
-		assertArrayEquals(expected, actual);
-	}
+    @Test
+    void testCountBasePairsWithNullString() {
+        long[] expected = {0, 0, 0, 0};
+        long[] actual = DNAAnalysis.countBasePairs(null);
+        assertArrayEquals(expected, actual);
+    }
 }
